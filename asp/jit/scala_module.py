@@ -1,7 +1,7 @@
 import os
 import os.path
 import subprocess
-from avroInter.PyAvroInter import *
+from asp.avroInter.py_avro_inter import *
 import sys
 
 class ScalaFunction:
