@@ -25,7 +25,7 @@ class ScalaFunction:
         
         # make_jar should be edited so that source.jar contains all the necessary files 
         # to be deployed to the slave nodes
-        os.system('/root/sejits/asp/asp/jit/make_jar '+ self.source_dir)     
+        os.system('/root/asp/asp/jit/make_jar '+ self.source_dir)     
         os.environ['FILE_LOC'] = self.source_dir + "/source.jar"
         out = subprocess.Popen('/root/spark/run -cp '+class_path + ' ' +self.classname, shell=True)
         out.wait()
