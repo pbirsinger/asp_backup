@@ -1,7 +1,7 @@
 import os
 import os.path
 import subprocess
-from asp.avroInter.py_avro_inter import *
+from asp.avro_inter.py_avro_inter import *
 import sys
 
 class ScalaFunction:
@@ -21,7 +21,7 @@ class ScalaFunction:
     def __call__(self, *args, **kwargs):
         write_avro_file(args, 'args.avro')
         prefix = os.environ['CLASSPATH']
-        class_path = prefix +':'+self.source_dir + ':/root/sejits/asp/avroInter'
+        class_path = prefix +':'+self.source_dir + ':/root/asp/asp/avro_inter'
         
         # make_jar should be edited so that source.jar contains all the necessary files 
         # to be deployed to the slave nodes
@@ -100,7 +100,7 @@ class ScalaModule:
             source = open(filepath, 'w')
             source.write(source_string)
             source.close()            
-            result = os.system("scalac -d %s -cp %s %s" % (mod_cache_dir, "../../avroInter", filepath))                
+            result = os.system("scalac -d %s -cp %s %s" % (mod_cache_dir, "../../asp/avro_inter", filepath))                
             os.remove(filepath)
             if result != 0:
                 os.system("rm -rf " +  mod_cache_dir)
